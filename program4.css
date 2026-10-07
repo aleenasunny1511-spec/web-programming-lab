@@ -1,0 +1,7 @@
+table{ width:10%;}
+th{color:hotpink;}
+td{color:blue;}
+p {border-style: groove;}
+tr:nth-child(even){background-color:yellow;}
+
+
