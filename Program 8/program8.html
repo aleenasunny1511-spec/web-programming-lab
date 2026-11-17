@@ -1,0 +1,38 @@
+<html>
+<head><title>Program 8</title>
+
+<style>
+body
+{ 
+text-align:center; 
+}
+.oval-image
+{
+width: 300px; 
+height: 180px; 
+border-radius:50%;
+}
+</style>
+
+</head>
+<body><br><br><br><br><br><br><br>
+<image src="/home/mca/Desktop/AleenaSunny WebLab/Program 8/car1.jpg" id="image" onmouseover="one()" onmouseout="two()" class="oval-image">
+<p id="p1"> </p>
+<script>
+ function one()
+{
+ document.getElementById("image").src="/home/mca/Desktop/AleenaSunny WebLab/Program 8/car2.jpeg";
+ document.getElementById("p1").innerHTML="onmouseover";
+ document.getElementById("p1").style.color="blue";
+}
+
+ function two()
+{
+ document.getElementById("image").src="/home/mca/Desktop/AleenaSunny WebLab/Program 8/car3.jpg";
+ document.getElementById("p1").innerHTML="onmouseout";
+ document.getElementById("p1").style.color="red";
+}
+</script>
+</body>
+</html>
+
