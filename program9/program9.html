@@ -1,0 +1,134 @@
+<html>
+<head>
+<title>Program 9-Form Validation</title>
+</head>
+<body>
+<h1>FORM VALIDATION</h1>
+<form name="form" action="" onsubmit="return validateForm()">
+<label>Name : </label>
+<select name="init" id="init">
+<option value="Mr">Mr</option>
+<option value="Mrs">Mrs</option>
+<option value="Miss">Miss</option>
+</select>
+<input type="text" id="fname" name="fname" placeholder="Enter your name"><br>
+<br>
+<label>Phone : </label>
+<select name="code" id="code">
+<option value="+91">+91</option>
+<option value="+111">+111</option>
+<option value="+866">+866</option>
+</select>
+<input type="tel" maxlength="10" id="mob" name="phone" placeholder="Enter your Phone number"> 
+<br><br>
+<label>Email : </label>
+<input type="email" id="email" name="email" placeholder="Enter your Email"> 
+<br><br>
+
+<label>Gender :</label>
+<input type="radio" id="gender" name="gender"><label>Male</label>
+<input type="radio" id="gender" name="gender"><label>Female</label>
+<input type="radio" id="gender" name="gender"><label>Other</label><br><br>
+
+<label>Languages known :</label>
+<input type="checkbox" name="lang" value="Malayalam"><label>Malayalam</label>
+<input type="checkbox" name="lang" value="English"><label>English</label>
+<input type="checkbox" name="lang" value="Hindi"><label>Hindi</label><br><br><br>
+
+<label>Password :</label>
+<input type="password" id="pass" name="password" placeholder="Enter your Password"><br><br>
+<label>Confirm Password :</label>
+<input type="password" id="confirmpass" name="password"><br><br>
+<button type="submit">Submit</button>
+</form>
+
+<script>
+function validateForm()
+{
+ var fname=document.form.fname.value.trim();
+ var mob=document.form.mob.value.trim();
+ var email=document.form.email.value.trim();
+
+ var gender=document.form.gender.value.trim();
+ 
+ // Using direct index access instead of a loop or querySelector
+ var langChecked = document.form.lang[0].checked || document.form.lang[1].checked || document.form.lang[2].checked;
+
+ var pass=document.form.pass.value.trim();
+ var confirmpass=document.form.confirmpass.value.trim();
+
+if(fname==""){
+alert("Enter your name");
+document.form.fname.focus();
+return false;
+}
+else if(!/^[a-zA-Z]+$/.test(fname)){
+alert("Enter valid name");
+document.form.fname.focus();
+return false;
+}
+if(mob==""){
+alert("Enter your Mobile Number");
+document.form.mob.focus();
+return false;
+}
+else if(!/^[0-9]{10}$/.test(mob)){
+alert("Enter a 10-digit Mobile number");
+document.form.mob.focus();
+return false;
+}
+if(email==""){
+alert("Enter your Email ID");
+document.form.email.focus();
+return false;
+}
+else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+alert("Enter a valid Email Id");
+document.form.email.focus();
+return false;
+}
+
+if(gender==""){
+alert("Select your Gender");
+document.form.gender.focus();
+return false;
+}
+
+if(!langChecked){
+alert("Select languages");
+return false;
+}
+
+if(pass==""){
+alert("Enter your password");
+document.form.pass.focus();
+return false;
+}
+else if(pass.length<8){
+alert("Password must contain atleast 8 characters");
+document.form.pass.focus();
+return false;
+}
+else if(!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&*!])./.test(pass)){
+alert("Passwords must contain Uppercase,Lowercase,Digits and Special Characters.")
+document.form.pass.focus();
+return false;
+}
+if(confirmpass==""){
+alert("Enter your password again");
+document.form.confirmpass.focus();
+return false;
+}
+else if(pass!=confirmpass){
+alert("Password dosen't match.");
+document.form.confirmpass.focus();
+return false;
+}
+
+alert("Form Submitted Successfully");
+return true;
+}
+
+</script>
+</body>
+</html>
